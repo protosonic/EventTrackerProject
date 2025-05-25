@@ -1,7 +1,6 @@
 package com.skilldistillery.tracker.entities;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
@@ -13,10 +12,11 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 
-class SessionTest {
+class BountyTest {
+
 	private static EntityManagerFactory emf;
 	private EntityManager em;
-	private Session session;
+	private Bounty bounty;
 
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
@@ -31,19 +31,20 @@ class SessionTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		em= emf.createEntityManager();
-		session = em.find(Session.class, 1);
+		bounty = em.find(Bounty.class, 1);
 	}
 
 	@AfterEach
 	void tearDown() throws Exception {
 		em.close();
-		session = null;
+		bounty = null;
 	}
 
 	@Test
-	void testtest_Session_entity_mapping() {
-		assertNotNull(session.getId());
-		assertEquals("TEST", session.getTitle());
+	void test_Bounty_entity_db_mapping() {
+		assertNotNull(bounty.getId());
+		assertEquals(1, bounty.getId());
+		assertEquals(50000, bounty.getAmount());
 	}
 
 }

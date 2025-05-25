@@ -1,0 +1,21 @@
+package com.skilldistillery.tracker.services;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.skilldistillery.tracker.entities.Target;
+import com.skilldistillery.tracker.repositories.TargetRepository;
+
+@Service
+public class TargetServiceImpl implements TargetService {
+	
+	@Autowired
+	private TargetRepository sessionRepo;
+
+	@Override
+	public Target findById(int id) {
+		return sessionRepo.findById(id).orElse(null);
+	}
+	
+
+}

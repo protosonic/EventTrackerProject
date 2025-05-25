@@ -1,5 +1,7 @@
 package com.skilldistillery.tracker.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,6 +19,11 @@ public class TargetController {
 
 	@Autowired
 	TargetService targetService;
+	
+	@GetMapping("targets")
+	public List<Target> index() {
+		return targetService.findAll();
+	}
 
 	@GetMapping("targets/{targetId}")
 	public Target findById(@PathVariable("targetId") int targetId, HttpServletResponse res) {

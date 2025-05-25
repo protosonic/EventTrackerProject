@@ -3,6 +3,9 @@ package com.skilldistillery.tracker.entities;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -23,8 +26,10 @@ public class Bounty {
 	@Column(name = "danger_level")
 	private int dangerLevel;
 	@Column(name = "issue_date")
+	@CreationTimestamp
 	private LocalDateTime issueDate;
 	@Column(name = "claimed_date")
+	@UpdateTimestamp
 	private LocalDateTime claimedDate;
 	@ManyToOne
 	@JoinColumn(name = "hunter_id")

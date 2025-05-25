@@ -6,25 +6,25 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.skilldistillery.tracker.entities.Target;
-import com.skilldistillery.tracker.services.TargetService;
+import com.skilldistillery.tracker.entities.Bounty;
+import com.skilldistillery.tracker.services.BountyService;
 
 import jakarta.servlet.http.HttpServletResponse;
 
 @RestController
 @RequestMapping("api")
-public class TargetController {
+public class BountyController {
 
 	@Autowired
-	TargetService targetService;
+	private BountyService bountyService;
 
-	@GetMapping("targets/{targetId}")
-	public Target findById(@PathVariable("targetId") int targetId, HttpServletResponse res) {
-		Target target = targetService.findById(targetId);
-		if (target == null) {
+	@GetMapping("bounties/{bountyId}")
+	public Bounty findById(@PathVariable("bountyId") int bountyd, HttpServletResponse res) {
+		Bounty bounty = bountyService.findById(bountyd);
+		if (bounty == null) {
 			res.setStatus(HttpServletResponse.SC_NOT_FOUND);
 		}
-		return target;
+		return bounty;
 	}
 
 }

@@ -6,25 +6,25 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.skilldistillery.tracker.entities.Target;
-import com.skilldistillery.tracker.services.TargetService;
+import com.skilldistillery.tracker.entities.Hunter;
+import com.skilldistillery.tracker.services.HunterService;
 
 import jakarta.servlet.http.HttpServletResponse;
 
 @RestController
 @RequestMapping("api")
-public class TargetController {
+public class HunterController {
 
 	@Autowired
-	TargetService targetService;
+	private HunterService hunterService;
 
-	@GetMapping("targets/{targetId}")
-	public Target findById(@PathVariable("targetId") int targetId, HttpServletResponse res) {
-		Target target = targetService.findById(targetId);
-		if (target == null) {
+	@GetMapping("hunters/{hunterId}")
+	public Hunter findById(@PathVariable("hunterId") int hunterId, HttpServletResponse res) {
+		Hunter hunter = hunterService.findById(hunterId);
+		if (hunter == null) {
 			res.setStatus(HttpServletResponse.SC_NOT_FOUND);
 		}
-		return target;
+		return hunter;
 	}
 
 }

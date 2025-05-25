@@ -10,11 +10,11 @@ import com.skilldistillery.tracker.repositories.TargetRepository;
 public class TargetServiceImpl implements TargetService {
 	
 	@Autowired
-	private TargetRepository sessionRepo;
+	private TargetRepository targetRepo;
 
 	@Override
 	public Target findById(int id) {
-		return sessionRepo.findById(id).orElse(null);
+		return targetRepo.findById(id).orElse(null);
 	}
 	
 

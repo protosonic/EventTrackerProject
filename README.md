@@ -30,7 +30,7 @@ May the hunt begin.
 
 ---
 ## Entity-Relationship diagram
-![ER Diagram](/DB/trackdb/png)
+![ER Diagram](/DB/trackdb.png)
 
 ---
 

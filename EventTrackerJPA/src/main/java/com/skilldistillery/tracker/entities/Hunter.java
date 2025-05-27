@@ -19,8 +19,9 @@ public class Hunter {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String name;
+	@Column(name = "`rank`")
 	private String rank;
-	private int reputaion;
+	private int reputation;
 	@Column(name = "image_url")
 	private String imageUrl;
 	@OneToMany(mappedBy = "hunter")
@@ -36,7 +37,7 @@ public class Hunter {
 		this.id = id;
 		this.name = name;
 		this.rank = rank;
-		this.reputaion = reputaion;
+		this.reputation = reputaion;
 		this.imageUrl = imageUrl;
 		this.bounties = bounties;
 	}
@@ -65,12 +66,12 @@ public class Hunter {
 		this.rank = rank;
 	}
 
-	public int getReputaion() {
-		return reputaion;
+	public int getReputation() {
+		return reputation;
 	}
 
-	public void setReputaion(int reputaion) {
-		this.reputaion = reputaion;
+	public void setReputation(int reputaion) {
+		this.reputation = reputaion;
 	}
 
 	public String getImageUrl() {
@@ -91,7 +92,7 @@ public class Hunter {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(bounties, id, imageUrl, name, rank, reputaion);
+		return Objects.hash(bounties, id, imageUrl, name, rank, reputation);
 	}
 
 	@Override
@@ -104,12 +105,12 @@ public class Hunter {
 			return false;
 		Hunter other = (Hunter) obj;
 		return Objects.equals(bounties, other.bounties) && id == other.id && Objects.equals(imageUrl, other.imageUrl)
-				&& Objects.equals(name, other.name) && Objects.equals(rank, other.rank) && reputaion == other.reputaion;
+				&& Objects.equals(name, other.name) && Objects.equals(rank, other.rank) && reputation == other.reputation;
 	}
 
 	@Override
 	public String toString() {
-		return "Hunter [id=" + id + ", name=" + name + ", rank=" + rank + ", reputaion=" + reputaion + ", imageUrl="
+		return "Hunter [id=" + id + ", name=" + name + ", rank=" + rank + ", reputaion=" + reputation + ", imageUrl="
 				+ imageUrl + ", bounties=" + bounties + "]";
 	}
 

@@ -34,7 +34,7 @@ public class Bounty {
 	@ManyToOne
 	@JoinColumn(name = "hunter_id")
 	private Hunter hunter;
-	@ManyToOne
+	@ManyToOne(optional = false)
 	@JoinColumn(name = "target_id")
 	private Target target;
 	@Column(name = "image_url")

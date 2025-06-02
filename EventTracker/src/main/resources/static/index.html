@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Galactic Bounty Tracker</title>
+<script src="js/script.js"></script>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+		<div class="container">
+		<div>
+			<h2>Bounty List</h2>
+			<table>
+				<thead>
+					<tr>
+						<th>Target</th>
+						<th>ID</th>
+						<th>Amount</th>
+						<th>Status</th>
+					</tr>
+				</thead>
+				<tbody id="bountiesTableBody"></tbody>
+			</table>
+		</div>
+
+		<div id="bountyData">
+			
+		</div>
+	</div>
+
+	<form name="newBountyForm">
+		<h2>Add New Bounty</h2>
+		<input name="amount" placeholder="Amount (e.g., 5000)" type="number" required />
+		<input name="description" placeholder="Description" type="text" required />
+		<select name="status">
+			<option value="0">Unclaimed</option>
+			<option value="1">Claimed</option>
+		</select>
+		<select name="dangerLevel">
+			<option>LOW</option>
+			<option>MEDIUM</option>
+			<option>HIGH</option>
+		</select>
+		<input name="imageUrl" placeholder="Image URL (optional)" type="text" />
+		<button name="addBountyButton">Add Bounty</button>
+	</form>
+</body>
+</html>

@@ -1,0 +1,7 @@
+id,name,species,wanted_level,planet_name,last_seen,image_url
+1,"Lucarius Sylvinate","Half-Serpinian ",4,S'kalium,NULL,NULL
+2,"Vrix Nol'tar",Zelurian,4,"Karnyx Prime","Docking Bay 12",NULL
+3,"Juno Breaker","Augmented Human",5,"Velatrax 9","Neon District, Sector 8",NULL
+4,"Meleth Sol",Draxian,3,Ossirius,"Hover Market near Blackspire Temple",NULL
+5,"Echo Delta-7","Rogue AI Unit",5,"Nuvian Reach"," Abandoned Relay Station Theta-21",NULL
+6,"Skrumm Cryxol",Gragskin,2,"Brakka IV","Waste Wastes",NULL

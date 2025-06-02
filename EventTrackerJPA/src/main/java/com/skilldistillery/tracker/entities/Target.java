@@ -41,8 +41,7 @@ public class Target {
 		super();
 		this.id = id;
 		this.name = name;
-		this.species = species;
-		this.wantedLevel = wantedLevel;
+		this.species = species; 
 		this.planetName = planetName;
 		this.lastSeen = lastSeen;
 		this.imageUrl = imageUrl;

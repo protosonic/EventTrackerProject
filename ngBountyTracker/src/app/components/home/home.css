@@ -1,0 +1,75 @@
+/* Font & Global Reset */
+body {
+  font-family: 'Orbitron', sans-serif;
+  background-color: #0d0d0d;
+  color: #e0e0e0;
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3, h4 {
+  letter-spacing: 1px;
+}
+
+/* Accent Glow */
+.glow-text {
+  color: #00ffe5;
+  text-shadow: 0 0 5px #00ffe5, 0 0 10px #008c7a;
+}
+
+/* Table Enhancements */
+.table-dark th,
+.table-dark td {
+  vertical-align: middle;
+}
+
+.table-hover tbody tr:hover {
+  background-color: rgba(0, 255, 229, 0.05);
+  cursor: pointer;
+}
+
+/* Image Styling */
+.bounty-img {
+  max-height: 300px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 255, 229, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.bounty-img:hover {
+  transform: scale(1.05);
+}
+
+/* Card Styling */
+.card.bg-dark {
+  background-color: #1a1a1a !important;
+  border: 1px solid #333;
+  border-radius: 15px;
+  box-shadow: 0 0 10px rgba(0, 255, 229, 0.15);
+}
+
+.list-group-item.bg-dark {
+  border: none;
+  color: #ccc;
+}
+
+/* Buttons */
+.btn-outline-light:hover,
+.btn-warning:hover,
+.btn-secondary:hover {
+  box-shadow: 0 0 10px rgba(0, 255, 229, 0.3);
+}
+
+/* Carousel caption */
+.carousel-caption {
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 10px;
+}
+
+/* Section headers */
+.section-title {
+  font-size: 2rem;
+  color: #00ffe5;
+  text-align: center;
+  margin: 1.5rem 0;
+}

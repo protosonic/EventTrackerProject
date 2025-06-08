@@ -1,0 +1,172 @@
+<div>
+
+<nav class="navbar navbar-light bg-light">
+  <a class="navbar-brand" href="#">
+    <img [src]= "'assets/img/default_target.png'" width="30" height="30" class="d-inline-block align-top" alt="">
+   <strong>{{title}}</strong>
+  </a>
+</nav>
+<button (click)="toggleShowAllBounties(true); toggleShowTopBounties(false); toggleShowNewBountyForm(false)">All Bounties</button>
+
+<button (click)="toggleShowAllBounties(false); toggleShowTopBounties(true); toggleShowNewBountyForm(false)">Most Wanted</button>
+
+<button (click)="toggleShowAllBounties(false); toggleShowTopBounties(false); toggleShowNewBountyForm(true)">Create New Bounty</button>
+</div>
+
+@if(showTopBounties){
+  <h2><strong>Galaxy's Most Wanted</strong></h2>
+  <div>
+    @for(bounty of topBounties; track $index) {
+      <img [src]= "'assets/img/default_target.png'"
+           alt= "Photo of bounty target {{bounty.id}}">
+      <div class="carousel-caption d-none d-md-block">
+        <!-- <h3>{{bounty.target || 'Unknown'}}</h3> -->
+        <p>Id: {{bounty.id}}</p>
+        <p>Reward: {{bounty.amount | currency}}</p>
+        <p>Danger Level: {{bounty.dangerLevel}}</p>
+      </div>
+
+    }
+  </div>
+}
+
+<!-- Show Table of all bounties -->
+@if (showAllBounties) {
+<div>
+  <span>Total Number of Galactic D-Gens: {{getBountyCount()}}</span>
+  <table>
+    <thead>
+      <tr>
+        <th>MugShot</th>
+        <th>Bounty ID</th>
+        <th>Reward Amount</th>
+        <th>Danger Level</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (bounty of bounties; track $index) {
+        <tr (click)="displayBounty(bounty); toggleShowAllBounties(false); toggleShowTopBounties(false)">
+          <img [src]= "'assets/img/default_target.png'" alt="Photo of bounty target {{bounty.id}}" width="60" >
+          <td>{{bounty.id}}</td>
+          <td>{{bounty.amount}}</td>
+          <td>{{bounty.dangerLevel}}</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>
+}
+
+<!-- Show details of selected Bounty -->
+@if (selectedBounty) {
+  <div>
+    <h3>Target: {{selectedBounty.target.name}}</h3>
+    <img [src]= "'assets/img/default_target.png'" alt="Photo of bounty target {{selectedBounty.id}}" width="60" >
+    <ul>
+      <li><strong>ID: </strong>{{selectedBounty.id}}</li>
+      <li><strong>Reward Amount: </strong>${{selectedBounty.amount}}</li>
+      <li><strong>Status: </strong>{{selectedBounty.status ? 'unclaimed' : 'claimed'}}</li>
+      <li><strong>Danger Level (1-5): </strong>{{selectedBounty.dangerLevel}}</li>
+      <em>{{selectedBounty.description}}</em>
+    </ul>
+    <ul>
+      <li><strong>Issue Date: </strong>{{selectedBounty.issueDate}}</li>
+              @if(!selectedBounty.status) {
+        <li><strong>Claimed By: </strong>{{selectedBounty.hunter}}</li>
+        <li><strong>Claim Date: </strong>{{selectedBounty.claimDate}}</li>
+        <!-- TODO: Claim date must be wired to status and populated when bounty is claimed -->
+      }
+    </ul>
+  </div>
+
+  <div>
+    <button (click)="toggleShowAllBounties(true); toggleShowTopBounties(false); displayBountiesTable()">Go Back</button>
+    <button (click)="setEditBounty()">Edit</button>
+  </div>
+}
+
+  @if(editBounty) {
+    <div class="container mt-4">
+  <h2 class="mb-4">Update Bounty</h2>
+
+  <form #bountyForm="ngForm" (ngSubmit)="updateBounty(editBounty)">
+
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label for="amount" class="form-label">Reward Amount</label>
+        <input type="number" class="form-control" id="amount" [(ngModel)]="editBounty.amount" name="amount">
+      </div>
+    </div>
+
+    <div class="form-check mb-3">
+                 <input class="form-check-input" type="checkbox" id="status" [(ngModel)]="editBounty.status" name="status">
+      <label class="form-check-label" for="status">
+        Unclaimed?
+      </label>
+    </div>
+
+    <div class="mb-3">
+      <label for="description" class="form-label">Description</label>
+      <textarea class="form-control" id="description" rows="3" [(ngModel)]="editBounty.description" name="description"></textarea>
+    </div>
+
+    <div class="mb-3">
+      <label for="dangerLevel" class="form-label">Danger Level (1-5)</label>
+      <select class="form-select" id="dangerLevel" [(ngModel)]="editBounty.dangerLevel" name="dangerLevel">
+          <option *ngFor="let level of [1,2,3,4,5]" [value]="level">{{level}}</option>
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label for="imageUrl" class="form-label">Image URL</label>
+        <input type="text" class="form-control" id="imageUrl" [(ngModel)]="editBounty.imageUrl" name="imageUrl">
+      </div>
+
+      <button type="submit" class="btn btn-success">Save Changes</button>
+      <button type="button" class="btn btn-secondary ms-2" (click)="cancelEditBounty()">Cancel</button>
+  </form>
+  </div>
+}
+
+@if(showNewBountyForm) {
+    <div class="container mt-4">
+  <h2 class="mb-4">Create New Bounty</h2>
+
+  <form #bountyForm="ngForm" (ngSubmit)="createBounty(newBounty)">
+
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label for="amount" class="form-label">Reward Amount</label>
+        <input type="number" class="form-control" id="amount" [(ngModel)]="newBounty.amount" name="amount">
+      </div>
+    </div>
+
+    <div class="form-check mb-3">
+                 <input class="form-check-input" type="checkbox" id="status" [(ngModel)]="newBounty.status" name="status">
+      <label class="form-check-label" for="status">
+        Unclaimed?
+      </label>
+    </div>
+
+    <div class="mb-3">
+      <label for="description" class="form-label">Description</label>
+      <textarea class="form-control" id="description" rows="3" [(ngModel)]="newBounty.description" name="description"></textarea>
+    </div>
+
+    <div class="mb-3">
+      <label for="dangerLevel" class="form-label">Danger Level (1-5)</label>
+      <select class="form-select" id="dangerLevel" [(ngModel)]="newBounty.dangerLevel" name="dangerLevel">
+          <option *ngFor="let level of [1,2,3,4,5]" [value]="level">{{level}}</option>
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label for="imageUrl" class="form-label">Image URL</label>
+        <input type="text" class="form-control" id="imageUrl" [(ngModel)]="newBounty.imageUrl" name="imageUrl">
+      </div>
+
+      <button type="submit" class="btn btn-success">Create Bounty</button>
+      <button type="button" class="btn btn-secondary ms-2" (click)="cancelNewBounty()">Cancel</button>
+  </form>
+  </div>
+}

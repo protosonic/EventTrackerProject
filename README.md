@@ -1,4 +1,4 @@
-# Galactic Bounty Tracker API
+# Galactic Bounty Tracker - Full Stack Edition
 
 **Track. Hunt. Claim. Repeat.**  
 Welcome to **Galactic Bounty Tracker**, a powerful RESTful API where legendary space-ferring bounty hunters wrangle their targets and forge their reputations. 
@@ -11,10 +11,18 @@ May the hunt begin.
 
 ## Core Features
 
-- Full CRUD for **Hunters**, **Bounties**, and **Targets**
+### Backend (Spring Boot API):
+- Full CRUD for Hunters, Bounties, and Targets
 - Assign targets to bounties
 - View all bounties claimed by a specific hunter
-- Ready-to-roll with simple configs and clean code structure
+- RESTful endpoints with clean, scalable architecture
+
+### Dynamic UI to create/view/edit/delete Hunters, Bounties, and Targets
+
+- Modal dialogs for confirmations (like bounty deletion)
+- Toggle filtering by claimed/unclaimed bounties
+- Live HTTP interactions with the backend API
+- Bootstrap styling with dark mode themes available
 
 ---
 

@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
-import { Target } from '@angular/compiler';
 import { HttpClient } from '@angular/common/http';
 import { Observable, catchError, throwError } from 'rxjs';
 import { Bounty } from '../models/bounty';
+import { Target } from '../models/target';
 
 @Injectable({
   providedIn: 'root'

@@ -2,9 +2,9 @@
 body {
   font-family: 'Orbitron', sans-serif;
   background-color: #0d0d0d;
-  color: #e0e0e0;
-  margin: 0;
-  padding: 0;
+  color: #2d227f;
+  margin: 100;
+  padding: 100;
 }
 
 h1, h2, h3, h4 {
@@ -73,3 +73,17 @@ h1, h2, h3, h4 {
   text-align: center;
   margin: 1.5rem 0;
 }
+/* Background */
+.stars-bg {
+  background-image: url('/assets/img/Spectre-of-Dead-Nebula-1122x631.jpg');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  margin: 100;
+  padding: 100;
+  font-family: 'Orbitron', sans-serif;
+
+}
+
+

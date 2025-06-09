@@ -6,6 +6,8 @@ import java.util.Objects;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -31,7 +33,7 @@ public class Bounty {
 	@Column(name = "claimed_date")
 	@UpdateTimestamp
 	private LocalDateTime claimedDate;
-	@ManyToOne
+	@ManyToOne(optional = false)
 	@JoinColumn(name = "hunter_id")
 	private Hunter hunter;
 	@ManyToOne(optional = false)

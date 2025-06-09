@@ -2,7 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, throwError } from 'rxjs';
 import { environment } from '../../environments/environment';
-import { Bounty as Hunter } from '../models/bounty';
+import { Hunter } from '../models/hunter';
+
 
 @Injectable({
   providedIn: 'root'
